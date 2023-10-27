@@ -1,0 +1,50 @@
+﻿@model ClientMVCApplication.Models.Trainee
+
+@{
+    ViewData["Title"] = "Delete Trainee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Trainee</h2>
+
+<div>
+    <h3>Are you sure you want to delete this trainee?</h3>
+    <div>
+        <h4>Trainee Information</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+          
+            <!-- Add other trainee properties here as needed -->
+        </dl>
+    </div>
+    @using (Html.BeginForm("ConfirmDeleteTrainee", "Trainees", new { id = Model.Id }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+    }
+</div>
